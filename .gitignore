@@ -53,4 +53,4 @@ results/
 
 # MultiQC report
 multiqc_report.html
-multiqc**
+multiqc_data/

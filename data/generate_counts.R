@@ -7,10 +7,14 @@
 generate_rnaseq_counts <- function(num_genes = 20000,
                                    num_samples = 12,
                                    groups = c("Control", "Treatment"),
-                                   prefix = "experiment") {
+                                   prefix = "experiment",
+                                   random_seed = 42) {
+    # Set seed for reproducibility
+    set.seed(random_seed)
+
     # Define output files based on prefix
-    output_file <- paste0("data/", prefix, "_counts.csv")
-    metadata_file <- paste0("data/", prefix, "_metadata.csv")
+    output_file <- paste0(prefix, "_counts.csv")
+    metadata_file <- paste0(prefix, "_metadata.csv")
 
     # Create more descriptive sample names that include the group and prefix
     samples_per_group <- num_samples / length(groups)
@@ -23,9 +27,6 @@ generate_rnaseq_counts <- function(num_genes = 20000,
 
     # Create gene names (Ensembl-like IDs)
     gene_names <- paste0("ENSG", formatC(1:num_genes, width = 11, format = "d", flag = "0"))
-
-    # Set seed for reproducibility
-    set.seed(42)
 
     # Create expression profiles with realistic properties
     # Log-normal distribution for mean expression levels
@@ -94,8 +95,6 @@ generate_rnaseq_counts <- function(num_genes = 20000,
 
     message("Created fake RNA-seq count file: ", output_file)
     message("Created sample metadata file: ", metadata_file)
-
-    return(list(counts = output_file, metadata = metadata_file))
 }
 
 # Display usage information
@@ -195,12 +194,9 @@ if (!interactive()) {
         )
     }
 
-    # Set random seed if specified
-    set.seed(random_seed)
-
-    # Generate data
+    # Generate data - pass the random seed to the function
     message("Generating ", num_genes, " genes across ", num_samples, " samples in ", length(groups), " conditions with prefix '", prefix, "'")
-    generate_rnaseq_counts(num_genes, num_samples, groups, prefix)
+    generate_rnaseq_counts(num_genes, num_samples, groups, prefix, random_seed)
 } else {
     # If running in interactive mode
     message("Run this script directly with arguments or call the generate_rnaseq_counts() function")
@@ -208,4 +204,4 @@ if (!interactive()) {
 
 # Interactive usage example:
 # source("generate_counts.R")
-# generate_rnaseq_counts(15000, 8, c("Control", "Treatment", "Mutant"), "Experiment1")
+# generate_rnaseq_counts(15000, 8, c("Control", "Treatment", "Mutant"), "Experiment1", 123)
