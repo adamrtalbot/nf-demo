@@ -1,7 +1,7 @@
 "sample_id","condition","batch"
-"Exp1_A_Sample_1","A",2
-"Exp1_A_Sample_2","A",1
-"Exp1_B_Sample_1","B",3
-"Exp1_B_Sample_2","B",1
-"Exp1_C_Sample_1","C",2
-"Exp1_C_Sample_2","C",1
+"data/Exp1_A_Sample_1","A",1
+"data/Exp1_A_Sample_2","A",3
+"data/Exp1_B_Sample_1","B",2
+"data/Exp1_B_Sample_2","B",2
+"data/Exp1_C_Sample_1","C",1
+"data/Exp1_C_Sample_2","C",3

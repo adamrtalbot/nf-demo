@@ -178,8 +178,7 @@ analyze_rnaseq_counts <- function(counts_file, file_prefix = "rnaseq") {
             id = paste0(safe_prefix, "_pca_scatter"),
             title = "PCA Plot",
             xlab = sprintf("PC1 (%.1f%%)", var_explained[1]),
-            ylab = sprintf("PC2 (%.1f%%)", var_explained[2]),
-            dataLabels = list(format = "{point.name}")
+            ylab = sprintf("PC2 (%.1f%%)", var_explained[2])
         ),
         data = list()
     )
