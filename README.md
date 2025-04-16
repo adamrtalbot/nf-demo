@@ -1,4 +1,4 @@
-# RNA-Seq Analysis Pipeline
+# nf-demo
 
 A Nextflow pipeline for demonstrating the value of Nextflow to R users.
 
