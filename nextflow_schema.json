@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com///nextflow_schema.json",
+  "title": " pipeline parameters",
+  "description": "",
+  "type": "object",
+  "$defs": {
+    "inputs_outputs": {
+      "title": "Inputs/Outputs",
+      "type": "object",
+      "description": "",
+      "default": "",
+      "properties": {
+        "counts": {
+          "type": "string",
+          "description": "Path to count values, accepts globs",
+          "format": "file-path"
+        },
+        "output_dir": {
+          "type": "string",
+          "description": "Where to write the output directories",
+          "format": "directory-path"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/$defs/inputs_outputs"
+    }
+  ]
+}

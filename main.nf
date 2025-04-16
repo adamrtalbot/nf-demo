@@ -1,9 +1,8 @@
 #!/usr/bin/env nextflow
 
 // Define parameters with defaults
-params.counts_dir = "data"
+params.counts = "data/*_counts.csv"
 params.output_dir = "results"
-params.pattern = "*_counts.csv"
 
 // Define the process to analyze RNA-seq counts and generate MultiQC-compatible reports
 process analyzeRnaSeqCounts {
@@ -53,14 +52,13 @@ workflow {
     ========================
     
     Input parameters:
-      counts_dir: ${params.counts_dir}
+      counts:     ${params.counts}
       output_dir: ${params.output_dir}
-      pattern:    ${params.pattern}
     """
 
     // Define the input channel for count files
     counts_files = Channel
-        .fromPath("${params.counts_dir}/${params.pattern}")
+        .fromPath("${params.counts}")
 
     // Run the RNA-seq analysis
     analyzeResults = analyzeRnaSeqCounts(counts_files)
